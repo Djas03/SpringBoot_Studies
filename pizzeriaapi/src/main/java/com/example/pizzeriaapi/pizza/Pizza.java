@@ -15,7 +15,7 @@ public class Pizza {
     private Long id;
     private String name;
     private double price;
-    private boolean isAvailable;
+    private boolean available;
 
     @Enumerated(EnumType.STRING)
     private Flavor flavor;

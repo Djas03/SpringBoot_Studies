@@ -7,15 +7,27 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
+
+import org.springframework.web.bind.annotation.GetMapping;
+
 @RestController
-@RequestMapping(name = "/pizzas")
+@RequestMapping("/pizza")
 @RequiredArgsConstructor
 public class PizzaController {
 
     private final PizzaService pizzaService;
 
-    @PostMapping
+    @PostMapping("/register")
     public void registerPizza(@RequestBody PizzaDTO dto){
       pizzaService.createPizza(dto);   
     }
+
+    @GetMapping("/all")
+    public List<PizzaDTO> getAllPizza(){
+        return pizzaService.getAllPizzas();
+    }
+
+    
+    
 }
