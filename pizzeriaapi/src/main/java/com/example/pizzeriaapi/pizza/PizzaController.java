@@ -1,6 +1,8 @@
 package com.example.pizzeriaapi.pizza;
 
 import org.springframework.web.bind.annotation.RestController;
+
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,7 +21,7 @@ public class PizzaController {
     private final PizzaService pizzaService;
 
     @PostMapping("/register")
-    public void registerPizza(@RequestBody PizzaDTO dto){
+    public void registerPizza(@RequestBody @Valid PizzaDTO dto){
       pizzaService.createPizza(dto);   
     }
 
@@ -27,7 +29,6 @@ public class PizzaController {
     public List<PizzaDTO> getAllPizza(){
         return pizzaService.getAllPizzas();
     }
-
     
     
 }
